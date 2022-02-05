@@ -23,14 +23,20 @@ jobs:
       - name: Compile HTML from PUG files
         run: |
           npm i -g pug-cli
-          find src/pug/*.pug -type f -maxdepth 1 -exec pug -b src/pug {} --out . \; || true
-          find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec bash -c 'pug -b src/pug $1 --out articles/${1##*/}' bash {} \; || true
+          if [ -d src/pug ]; then
+            find src/pug/*.pug -type f -maxdepth 1 -exec pug -b src/pug {} --out . \;
+          fi
+          if [ -d src/pug/articles ]; then
+            find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec bash -c 'pug -b src/pug $1 --out articles/${1##*/}' bash {} \;
+          fi
       - name: Add and commit changes to main branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add css/* || true
-          git add articles/* || true
-          git add *.html || true
-          git diff-index --quiet HEAD || git commit -m 'Update compiled files'
-          git push
+          git add css/* articles/* *.html > /dev/null 2>&1 || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update compiled files'
+            git push
+          else
+            echo "No changes to commit."
+          fi
