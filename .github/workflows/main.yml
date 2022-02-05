@@ -1,0 +1,36 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source Git branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.4.8
+        with:
+          source: src/scss/main.scss
+          destination: css/main.css
+
+      - name: Compile HTML from PUG files
+        run: |
+          npm i -g pug-cli
+          find src/pug/*.pug -type f -maxdepth 1 -exec pug {} --out . \; || true
+          find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec bash -c 'pug $1 --out articles/${1##*/}' bash {} \; || true
+      - name: Add and commit changes to main branch
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add css/*
+          git add articles/*
+          git add *.html
+          git diff-index --quiet HEAD || git commit -m 'Update compiled files'
+          git push
