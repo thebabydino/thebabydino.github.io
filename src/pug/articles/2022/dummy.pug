@@ -1,4 +1,10 @@
-html
-  head
-  body
-    p fucking hell
+doctype html
+html(lang="en")
+
+	head
+		include templ/_head.pug
+		title dummy
+	body
+		main
+			a(href='/articles/2019/mummy.html') mummy
+		include templ/_foot.pug
