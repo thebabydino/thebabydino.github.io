@@ -23,8 +23,8 @@ jobs:
       - name: Compile HTML from PUG files
         run: |
           npm i -g pug-cli
-          find src/pug/*.pug -type f -maxdepth 1 -exec pug {} --out . \; || true
-          find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec bash -c 'pug $1 --out articles/${1##*/}' bash {} \; || true
+          find src/pug/*.pug -type f -maxdepth 1 -exec pug -b src/pug {} --out . \; || true
+          find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec bash -c 'pug -b src/pug $1 --out articles/${1##*/}' bash {} \; || true
       - name: Add and commit changes to main branch
         run: |
           git config --local user.email 'action@github.com'
