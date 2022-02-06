@@ -1,16 +1,42 @@
+- var data = [
+- 	{
+- 		text: 'Homepage', 
+- 		attr: { href: '#', title: 'back to homepage' }
+- 	}, 
+- 	{
+- 		text: 'Links', 
+- 		attr: { href: '#', title: 'linky linky' }
+- 	}, 
+- 	{
+- 		text: 'Posts', 
+- 		attr: { href: '#', title: 'posts archive' }
+- 	}, 
+- 	{
+- 		text: 'About', 
+- 		attr: { href: '#', title: 'who and why' }
+- 	}
+- ];
+- var n = data.length;
+
+mixin navi(excl = -1)
+	nav
+		- for(var i = 0; i < n; i++)
+			- if(i !== excl)
+				- var c = data[i], a = c.attr;
+				a(href=a.href title=a.title) #{c.text}
+
 doctype html
 html(lang="en")
+	head
+		meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+		block title
+		link(rel="stylesheet" href="/css/main.css")
 
-head
-  meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
-  block title
-  link(rel="stylesheet" href="/css/main.css")
+	body
 
-body
+		block header
 
-  block header
-  
-  block content
-  
-  footer
-		p tigers are kitties
+		block content
+
+		footer
+			p tigers are kitties
