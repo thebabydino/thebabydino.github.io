@@ -1,16 +1,17 @@
-doctype html
-html(lang="en")
 
-	head
-		include templ/_head.pug
-		title yay, title
+extends templ/_page.pug
 
-	body
-		main 
-			p boo ya!
-			p
-				a(href='/articles/2022/dummy.html') dummy
-			
-			p
-				a(href='/articles/2019/mummy.html') mummy
-		include templ/_foot.pug
+block title
+	title Kreator Fangirls
+
+block header
+	h1 heading
+
+block content
+	main
+		p boo ya!
+		p
+			a(href='/articles/2022/dummy.html') dummy
+
+		p
+			a(href='/articles/2019/mummy.html') mummy
