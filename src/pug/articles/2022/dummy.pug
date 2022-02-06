@@ -1,10 +1,12 @@
-doctype html
-html(lang="en")
+extends templ/_page.pug
 
-	head
-		include /templ/_head.pug
-		title dummy
-	body
-		main
+block title
+	title you dummy
+
+block header
+	h1 dummy
+
+block content
+	main
+		p
 			a(href='/articles/2019/mummy.html') mummy
-		include /templ/_foot.pug
