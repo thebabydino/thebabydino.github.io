@@ -1,1 +1,1 @@
-body{background:gold}
+*{margin:0;padding:0;background:transparent;color:inherit;font:inherit}html,body{display:grid}html{min-height:100%}body{grid-template-rows:max-content 1fr max-content;background:#0d1117;color:#eee;font:1.25em/1.25 ubuntu,trebuchet ms,arial,sans-serif}
