@@ -17,6 +17,7 @@ html { min-height: 100% }
 
 body {
 	grid-template: max-content 1fr max-content/ min(50em, 100%);
+	justify-content: center;
 	background: $bg-1st;
 	color: $fg-1st;
 	font: 1.25em/ 1.25 ubuntu, trebuchet ms, arial, sans-serif
