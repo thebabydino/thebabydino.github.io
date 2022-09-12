@@ -5,6 +5,7 @@ $fg-1st: #eee;
 * {
 	margin: 0;
 	padding: 0;
+	max-width: 100%;
 	background: transparent;
 	color: inherit;
 	font: inherit
@@ -15,7 +16,7 @@ html, body { display: grid }
 html { min-height: 100% }
 
 body {
-	grid-template-rows: max-content 1fr max-content;
+	grid-template: max-content 1fr max-content/ min(50em, 100%);
 	background: $bg-1st;
 	color: $fg-1st;
 	font: 1.25em/ 1.25 ubuntu, trebuchet ms, arial, sans-serif
