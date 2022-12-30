@@ -14,6 +14,7 @@ $fg-1st: #eee;
 a {
 	display: inline-block;
 	position: relative;
+	padding: 1px 3px;
 	background: linear-gradient(to right bottom, gold, hotpink);
 	-webkit-background-clip: text;
 	color: transparent;
@@ -42,13 +43,14 @@ body {
 	justify-content: center;
 	background: $bg-1st;
 	color: $fg-1st;
-	font: 1.25em/ 1.25 ubuntu, trebuchet ms, arial, sans-serif
+	font: 1.25em/ 1.375 ubuntu, trebuchet ms, arial, sans-serif
 }
+
+header, footer { text-align: center }
 
 header {
 	font-size: clamp(1em, 12.5vmin, 5em);
 	font-weight: 900;
-	text-align: center;
 	filter: drop-shadow(13px 5px 13px $bg-1st)
 }
 
