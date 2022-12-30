@@ -42,6 +42,7 @@ body {
 	grid-template: max-content 1fr max-content/ min(50em, 100%);
 	justify-content: center;
 	overflow-x: hidden;
+	padding: .5em;
 	background: $bg-1st;
 	color: $fg-1st;
 	font: 1.25em/ 1.375 ubuntu, trebuchet ms, arial, sans-serif
@@ -71,8 +72,7 @@ h1 {
 }
 
 main {
-	align-self: center;
-	padding: .5em
+	align-self: center
 }
 
 footer {
