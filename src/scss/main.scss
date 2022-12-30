@@ -69,7 +69,7 @@ h1 {
 		-webkit-mask: var(--mask);
 						mask: var(--mask);
 		
-		&:last-child { color: transparent }
+		&:not([style]) { color: transparent }
 	}
 }
 
