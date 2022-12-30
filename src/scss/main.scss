@@ -15,7 +15,7 @@ a {
 	display: inline-block;
 	position: relative;
 	padding: 1px 3px;
-	background: linear-gradient(16deg, #f08e42, #f65b99, #e591d6);
+	background: linear-gradient(16deg, #f5a46b, #f872aa, #f5bcf1);
 	-webkit-background-clip: text;
 	color: transparent;
 	text-decoration: none;
@@ -67,7 +67,9 @@ h1 {
 					hsl(0, 0%, 100%, var(--j)) calc(50% - .5px), 
 					hsl(0, 0%, 100%, var(--i)) calc(50% + .5px));
 		-webkit-mask: var(--mask);
-						mask: var(--mask)
+						mask: var(--mask);
+		
+		&:last-child { color: transparent }
 	}
 }
 
