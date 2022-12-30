@@ -66,8 +66,13 @@ h1 {
 					hsl(0, 0%, 100%, var(--j)) calc(50% - .5px), 
 					hsl(0, 0%, 100%, var(--i)) calc(50% + .5px));
 		-webkit-mask: var(--mask);
-						mask: var(--mask);
+						mask: var(--mask)
 	}
+}
+
+main {
+	align-self: center;
+	padding: .5em
 }
 
 footer {
@@ -76,6 +81,7 @@ footer {
 		flex-wrap: wrap;
 		justify-content: center;
 		list-style: none;
+		padding-bottom: .5em
 	}
 	
 	li { padding: 0 .5em }
