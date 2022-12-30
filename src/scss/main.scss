@@ -34,7 +34,7 @@ a {
 	&:hover, &:focus { --hl: 1 }
 }
 
-html, body { display: grid }
+html, body, h1 { display: grid }
 
 html { min-height: 100% }
 
@@ -52,6 +52,20 @@ header {
 	font-size: clamp(1em, 12.5vmin, 5em);
 	font-weight: 900;
 	filter: drop-shadow(13px 5px 13px $bg-1st)
+}
+
+h1 {
+	span {
+		--j: calc(1 - var(--i));
+		--sgn: calc(2*var(--i) - 1);
+		grid-area: 1/ 1;
+		transform: translate(calc(var(--sgn)*.25rem));
+		--mask: 
+			linear-gradient(to right bottom, 
+					hsl(0, 0%, 100%, var(--j)) 50%, hsl(0, 0%, 100%, var(--i)) 0);
+		-webkit-mask: var(--mask);
+						mask: var(--mask);
+	}
 }
 
 footer {
