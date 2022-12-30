@@ -24,10 +24,12 @@ a {
 		inset: 0;
 		background-image: inherit;
 		clip-path: inset(calc((1 - var(--hl, 0))*(100% - 2px)) 0 0);
+		mix-blend-mode: difference;
 		transition: clip-path .35s;
 		content: ''
 	}
 	
+	&:focus { outline: none }
 	&:hover, &:focus { --hl: 1 }
 }
 
