@@ -11,6 +11,8 @@ $fg-1st: #eee;
 	font: inherit
 }
 
+a { color: hotpink }
+
 html, body { display: grid }
 
 html { min-height: 100% }
@@ -21,4 +23,21 @@ body {
 	background: $bg-1st;
 	color: $fg-1st;
 	font: 1.25em/ 1.25 ubuntu, trebuchet ms, arial, sans-serif
+}
+
+header {
+	font-size: clamp(1em, 12.5vmin, 5em);
+	font-weight: 900;
+	text-align: center;
+	filter: drop-shadow(13px 5px 13px $bg-1st)
+}
+
+footer {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+	}
+	
+	li { padding: 0 .5em }
 }
