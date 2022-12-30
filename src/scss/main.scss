@@ -59,7 +59,9 @@ h1 {
 		--j: calc(1 - var(--i));
 		--sgn: calc(2*var(--i) - 1);
 		grid-area: 1/ 1;
-		transform: translate(calc(var(--sgn)*.25rem));
+		place-self: center;
+		transform: translate(calc(var(--sgn)*.5rem));
+		text-transform: uppercase;
 		--mask: 
 			linear-gradient(to right bottom, 
 					hsl(0, 0%, 100%, var(--j)) 50%, hsl(0, 0%, 100%, var(--i)) 0);
