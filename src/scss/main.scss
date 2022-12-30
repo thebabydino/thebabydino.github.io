@@ -15,7 +15,7 @@ a {
 	display: inline-block;
 	position: relative;
 	padding: 1px 3px;
-	background: linear-gradient(to right bottom, gold, hotpink);
+	background: linear-gradient(to right top, gold, hotpink);
 	-webkit-background-clip: text;
 	color: transparent;
 	text-decoration: none;
@@ -49,7 +49,7 @@ body {
 header, footer { text-align: center }
 
 header {
-	font-size: clamp(1em, 12.5vmin, 5em);
+	font-size: clamp(1em, 15vmin, 5em);
 	font-weight: 900;
 	filter: drop-shadow(13px 5px 13px $bg-1st)
 }
@@ -60,10 +60,9 @@ h1 {
 		--sgn: calc(2*var(--i) - 1);
 		grid-area: 1/ 1;
 		place-self: center;
-		transform: translate(calc(var(--sgn)*.5rem));
-		text-transform: uppercase;
+		transform: translate(calc(var(--sgn)*4px), calc(var(--sgn)*-3px));
 		--mask: 
-			linear-gradient(to right bottom, 
+			linear-gradient(to right top, 
 					hsl(0, 0%, 100%, var(--j)) 50%, hsl(0, 0%, 100%, var(--i)) 0);
 		-webkit-mask: var(--mask);
 						mask: var(--mask);
