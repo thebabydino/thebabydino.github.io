@@ -11,7 +11,25 @@ $fg-1st: #eee;
 	font: inherit
 }
 
-a { color: hotpink }
+a {
+	display: inline-block;
+	position: relative;
+	background: linear-gradient(to right bottom, gold, hotpink);
+	-webkit-background-clip: text;
+	color: transparent;
+	text-decoration: none;
+	
+	&::after {
+		position: absolute;
+		inset: 0;
+		background-image: inherit;
+		clip-path: inset(calc((1 - var(--hl, 0))*(100% - 2px)) 0 0);
+		transition: clip-path .35s;
+		content: ''
+	}
+	
+	&:hover, &:focus { --hl: 1 }
+}
 
 html, body { display: grid }
 
