@@ -60,11 +60,11 @@ h1 {
 		--j: calc(1 - var(--i));
 		--sgn: calc(2*var(--i) - 1);
 		grid-area: 1/ 1;
-		transform: translate(calc(var(--sgn)*4px), calc(var(--sgn)*-3px));
+		transform: translate(calc(var(--sgn)*3px), calc(var(--sgn)*-2px));
 		--mask: 
-			linear-gradient(to right top, 
-					hsl(0, 0%, 100%, var(--j)) calc(50% - 1px), 
-					hsl(0, 0%, 100%, var(--i)) calc(50% + 1px));
+			linear-gradient(8deg, 
+					hsl(0, 0%, 100%, var(--j)) calc(50% - .5px), 
+					hsl(0, 0%, 100%, var(--i)) calc(50% + .5px));
 		-webkit-mask: var(--mask);
 						mask: var(--mask);
 	}
