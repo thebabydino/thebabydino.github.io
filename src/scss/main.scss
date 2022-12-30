@@ -50,7 +50,7 @@ body {
 header, footer { text-align: center }
 
 header {
-	font-size: clamp(1em, 15vmin, 5em);
+	font-size: clamp(1em, 19vmin, 9em);
 	font-weight: 900;
 	filter: drop-shadow(13px 5px 13px $bg-1st)
 }
@@ -60,7 +60,7 @@ h1 {
 		--j: calc(1 - var(--i));
 		--sgn: calc(2*var(--i) - 1);
 		grid-area: 1/ 1;
-		transform: translate(calc(var(--sgn)*3px), calc(var(--sgn)*-2px));
+		transform: translate(calc(var(--sgn)*4px), calc(var(--sgn)*-3px));
 		--mask: 
 			linear-gradient(8deg, 
 					hsl(0, 0%, 100%, var(--j)) calc(50% - .5px), 
