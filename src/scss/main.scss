@@ -41,6 +41,7 @@ html { min-height: 100% }
 body {
 	grid-template: max-content 1fr max-content/ min(50em, 100%);
 	justify-content: center;
+	overflow-x: hidden;
 	background: $bg-1st;
 	color: $fg-1st;
 	font: 1.25em/ 1.375 ubuntu, trebuchet ms, arial, sans-serif
@@ -59,11 +60,11 @@ h1 {
 		--j: calc(1 - var(--i));
 		--sgn: calc(2*var(--i) - 1);
 		grid-area: 1/ 1;
-		place-self: center;
 		transform: translate(calc(var(--sgn)*4px), calc(var(--sgn)*-3px));
 		--mask: 
 			linear-gradient(to right top, 
-					hsl(0, 0%, 100%, var(--j)) 50%, hsl(0, 0%, 100%, var(--i)) 0);
+					hsl(0, 0%, 100%, var(--j)) calc(50% - 1px), 
+					hsl(0, 0%, 100%, var(--i)) calc(50% + 1px));
 		-webkit-mask: var(--mask);
 						mask: var(--mask);
 	}
