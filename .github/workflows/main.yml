@@ -23,11 +23,11 @@ jobs:
       - name: Compile HTML from PUG files
         run: |
           npm i -g pug-cli
-          if [ -d src/pug ]; then
-            find src/pug/*.pug -type f -maxdepth 1 | xargs -I {} pug -P -b src/pug --out . {}
+          if [ -d src ]; then
+            find src/*.pug -type f -maxdepth 1 | xargs -I {} pug -P -b src --out . {}
           fi
-          if [ -d src/pug/articles ]; then
-            find src/pug/articles/* -type f -name "*.pug" -maxdepth 1 | xargs -I {} sh -c 'FILE="{}";mkdir -p "articles/$(basename $(dirname "${FILE}"))/$(basename "${FILE}" .pug)" && cat "${FILE}" | pug -P -b src/pug > "articles/$(basename $(dirname "${FILE}"))/$(basename "${FILE}" .pug)/index.html"'
+          if [ -d src/articles ]; then
+            find src/articles/* -type f -name "*.pug" -mindepth 2 -maxdepth 2 | xargs -I {} sh -c 'SRC="{}"; DEST="$(dirname "${SRC#src/}")/$(basename "${SRC}" .pug).html"; mkdir -p $(dirname ${DEST}) && cat "${SRC}" | pug -P -b src > "${DEST}"'
           fi
       - name: Add and commit changes to main branch
         run: |
