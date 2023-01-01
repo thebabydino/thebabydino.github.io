@@ -76,7 +76,7 @@ h1 {
 				background: 
 					linear-gradient(8deg, 
 							#fff 32%, #aaa calc(50% - 1px), 
-							#222, #fff calc(50% + 1px));
+							$bg-1st, #fff calc(50% + 1px));
 				-webkit-background-clip: text;
 				-webkit-mask: var(--mask);
 								mask: var(--mask);
