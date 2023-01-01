@@ -24,10 +24,10 @@ jobs:
         run: |
           npm i -g pug-cli
           if [ -d src/pug ]; then
-            find src/pug/*.pug -type f -maxdepth 1 | xargs -I {} pug -b src/pug --out . {}
+            find src/pug/*.pug -type f -maxdepth 1 | xargs -I {} pug -P -b src/pug --out . {}
           fi
           if [ -d src/pug/articles ]; then
-            find src/pug/articles -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'pug -b src/pug --out articles/$(basename {}) {}'
+            find src/pug/articles -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'mkdir -p articles/$(basename {}) && pug -P -b src/pug < {} > articles/$(basename {})/index.html'
           fi
       - name: Add and commit changes to main branch
         run: |
