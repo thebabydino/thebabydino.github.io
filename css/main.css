@@ -1,1 +1,102 @@
-*{margin:0;padding:0;max-width:100%;background:transparent;color:inherit;font:inherit}a{display:inline-block;position:relative;padding:0 1px 1px;background:linear-gradient(16deg, #f5a46b, #f872aa, #f5bcf1);-webkit-background-clip:text;color:transparent;text-decoration:none}a::after{position:absolute;inset:0;background-image:inherit;clip-path:inset(calc((1 - var(--hl, 0)) * (100% - 2px)) 0 0);mix-blend-mode:difference;transition:clip-path .35s;content:""}a:focus{outline:none}a:hover,a:focus{--hl: 1 }html,body,h1{display:grid}html{min-height:100%}body{grid-template:max-content 1fr max-content/min(50em, 100%);justify-content:center;overflow-x:hidden;padding:.5em;background:#0d1117;color:#eee;font:1.25em/1.375 ubuntu,trebuchet ms,arial,sans-serif}header,footer{text-align:center}header{font-weight:900;filter:drop-shadow(13px 5px 13px #0d1117)}h1 span{--j: calc(1 - var(--i));--sgn: calc(2*var(--i) - 1);grid-area:1/1;place-self:center;translate:calc(var(--sgn)*4px) calc(var(--sgn)*-3px);color:rgba(255,255,255,.001);font-size:clamp(1em,19vmin,9em);--mask: linear-gradient(8deg, hsla(0, 0%, 0%, var(--j)) calc(50% - 1px), hsla(0, 0%, 0%, var(--i)) calc(50% + 1px))}h1 span[aria-hidden]::after{background:linear-gradient(8deg, #fff 32%, #aaa calc(50% - 1px), #0d1117, #fff calc(50% + 1px));-webkit-background-clip:text;-webkit-mask:var(--mask);mask:var(--mask);content:var(--text)}main{align-self:center}footer ul{display:flex;flex-wrap:wrap;justify-content:center;list-style:none;padding-bottom:.5em}footer li{padding:0 .5em}.credit{font-size:.75em}
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  display: inline-block;
+  position: relative;
+  padding: 0 1px 1px;
+  background: linear-gradient(16deg, #f5a46b, #f872aa, #f5bcf1);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-decoration: none;
+}
+a::after {
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  clip-path: inset(calc((1 - var(--hl, 0)) * (100% - 2px)) 0 0);
+  mix-blend-mode: difference;
+  transition: clip-path 0.35s;
+  content: "";
+}
+a:focus {
+  outline: none;
+}
+a:hover, a:focus {
+  --hl: 1 ;
+}
+
+html, body, h1 {
+  display: grid;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  grid-template: max-content 1fr max-content/min(50em, 100%);
+  justify-content: center;
+  overflow-x: hidden;
+  padding: 0.5em;
+  background: #0d1117;
+  color: #eee;
+  font: 1.25em/1.375 ubuntu, trebuchet ms, arial, sans-serif;
+}
+
+header, footer {
+  text-align: center;
+}
+
+header {
+  font-weight: 900;
+  filter: drop-shadow(13px 5px 13px #0d1117);
+}
+
+h1 span {
+  --j: calc(1 - var(--i));
+  --sgn: calc(2*var(--i) - 1);
+  grid-area: 1/1;
+  place-self: center;
+  translate: calc(var(--sgn) * 4px) calc(var(--sgn) * -3px);
+  color: hsla(0deg, 0%, 100%, 0.001);
+  font-size: clamp(1em, 19vmin, 9em);
+  --mask:
+  	linear-gradient(8deg,
+  			hsla(0, 0%, 0%, var(--j)) calc(50% - 1px),
+  			hsla(0, 0%, 0%, var(--i)) calc(50% + 1px));
+}
+h1 span[aria-hidden]::after {
+  background: linear-gradient(8deg, #fff 32%, #aaa calc(50% - 1px), #0d1117, #fff calc(50% + 1px));
+  -webkit-background-clip: text;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  content: var(--text);
+}
+
+main {
+  align-self: center;
+}
+
+footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding-bottom: 0.5em;
+}
+footer li {
+  padding: 0 0.5em;
+}
+
+.credit {
+  font-size: 0.75em;
+}
+
+/*# sourceMappingURL=main.css.map */
