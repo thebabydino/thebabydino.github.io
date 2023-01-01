@@ -1,13 +1,15 @@
 extends templ/_page.pug
 
+- let text = 'Ana Tudor';
+
 block title
-	title Ana Tudor
+	title #{text}
 
 block header
-	h1(aria-label='Ana Tudor: personal web page')
-		span(aria-hidden='true' style='--i: 0') Ana Tudor
-		span(aria-hidden='true' style='--i: 1') Ana Tudor
-		span(aria-hidden='true') Ana Tudor
+	h1(style=`--text: '${text}'`)
+		span(aria-hidden='true' style='--i: 0')
+		span(aria-hidden='true' style='--i: 1')
+		span #{text}
 	//+navi(0)
 
 block content
