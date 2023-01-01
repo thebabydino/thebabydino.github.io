@@ -1,0 +1,57 @@
+-
+	var data = [
+		{
+			text: 'Homepage', 
+			attr: { href: '/', title: 'back to homepage' }
+		}, 
+		{
+			text: 'Links', 
+			attr: { href: '/links.html', title: 'linky linky' }
+		}, 
+		{
+			text: 'Posts', 
+			attr: { href: '#', title: 'posts archive' }
+		}, 
+		{
+			text: 'About', 
+			attr: { href: '#', title: 'who and why' }
+		}
+	];
+- var n = data.length;
+
+mixin navi(excl = -1)
+	nav
+		- for(var i = 0; i < n; i++)
+			- if(i !== excl)
+				- var c = data[i], a = c.attr;
+				a(href=a.href title=a.title) #{c.text}
+
+doctype html
+html(lang="en")
+	head
+		meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+		block title
+		link(rel="stylesheet" href="/css/main.css")
+
+	body
+		header
+			block header
+
+		main
+			block content
+
+		footer
+			section.places
+				p Me elsewhere:
+				ul
+					li: a(href='https://mastodon.social/@anatudor' target='_blank') Mastodon
+					li: a(href='https://twitter.com/anatudor' target='_blank') Twitter
+					li: a(href='https://stackoverflow.com/users/1397351/ana' target='_blank') Stack Overflow
+					li: a(href='https://www.patreon.com/anatudor' target='_blank') Patreon
+					li: a(href='https://ko-fi.com/anatudor' target='_blank') Ko-fi
+					li: a(href='https://liberapay.com/anatudor/' target='_blank') Liberapay
+			section.credit
+				p © Ana Tudor 2022-2023
+				p All HTML, CSS, JS handcoded by me from scratch, no libraries used. All the YAML config stuff by 
+					a(href='https://github.com/mihaitodor' target='_blank') Mihai Todor
+					| .
