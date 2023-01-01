@@ -27,7 +27,7 @@ jobs:
             find src/pug/*.pug -type f -maxdepth 1 | xargs -I {} pug -P -b src/pug --out . {}
           fi
           if [ -d src/pug/articles ]; then
-            find src/pug/articles -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'mkdir -p articles/$(basename {}) && pug -P -b src/pug < {} > articles/$(basename {})/index.html'
+            find src/pug/articles/* -type f -name "*.pug" -maxdepth 1 | xargs -I {} sh -c 'FILE="{}";mkdir -p "articles/$(basename $(dirname "${FILE}"))/$(basename "${FILE}" .pug)" && cat "${FILE}" | pug -P -b src/pug > "articles/$(basename $(dirname "${FILE}"))/$(basename "${FILE}" .pug)/index.html"'
           fi
       - name: Add and commit changes to main branch
         run: |
