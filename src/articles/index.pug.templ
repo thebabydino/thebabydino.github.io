@@ -13,6 +13,6 @@ block content
 		p
 			{{- range file.Walk "src/articles" }}
 			{{- if and (not (file.IsDir .)) (eq (filepath.Ext .) ".pug") }}
-			a(href='{{strings.TrimPrefix "src/" (filepath.Dir .)}}/') {{strings.TrimPrefix "src/articles/" (filepath.Dir .)}}
+			a(href='{{strings.TrimPrefix "src/articles/" (filepath.Dir .)}}/') {{strings.TrimPrefix "src/articles/" (filepath.Dir .)}}
 			{{- end}}
 			{{- end}}
