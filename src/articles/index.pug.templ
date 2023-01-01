@@ -11,6 +11,8 @@ block content
 	main
 		p boo ya!
 		p
-			{{- range file.ReadDir "src/articles" }}{{ if (file.IsDir (print "src/articles/" .)) }}
-			a(href='/articles/{{.}}/') {{.}}
-			{{end}}{{- end}}
+			{{- range file.Walk "src/articles" }}
+			{{- if and (not (file.IsDir .)) (eq (filepath.Ext .) ".pug") }}
+			a(href='{{strings.TrimPrefix "src/" (filepath.Dir .)}}/') {{strings.TrimPrefix "src/articles/" (filepath.Dir .)}}
+			{{- end}}
+			{{- end}}
