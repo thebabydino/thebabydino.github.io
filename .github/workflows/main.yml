@@ -14,26 +14,46 @@ jobs:
           ref: main
           fetch-depth: 1
 
-      - name: Compile CSS from SCSS files
-        uses: gha-utilities/sass-build@v0.4.8
-        with:
-          source: src/scss/main.scss
-          destination: css/main.css
-
-      - name: Compile HTML from PUG files
+      - name: Compile PUG and SASS
         run: |
-          npm i -g pug-cli
+          # Install pug, gomplate and sass
+          npm install -g --loglevel=silent pug-cli gomplate sass
+          
+          # Compile top level HTML files
           if [ -d src ]; then
-            find src/*.pug -type f -maxdepth 1 | xargs -I {} pug -P -b src --out . {}
+            find src/*.pug -type f -maxdepth 1 | xargs -I {} pug -b src --out . {}
           fi
+          
+          # Compile top level CSS files
+          if [ -d src/scss ]; then
+            find src/scss/*.scss -type f -maxdepth 1 | xargs -I {} sh -c 'sass {} css/$(basename "{}" .scss).css'
+          fi
+          
+          # Compile individual pages
+          if [ -d src/pages ]; then
+            find src/pages -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'pug -b src --out $(basename {}) {}'
+          fi
+          
+          # Compile notes
+          if [ -d src/notes ]; then
+            gomplate -c .=src/notes/notes.json --plugin pug=src/scripts/pug_wrapper.sh -t pug_templ=src/notes/_notes.pug.templ -f src/templ/gomplate/_notes.templ
+          fi
+          
+          # Compile articles
           if [ -d src/articles ]; then
+            # Compile HTML
             find src/articles/* -type f -name "*.pug" -mindepth 2 -maxdepth 2 | xargs -I {} sh -c 'SRC="{}"; DEST="$(dirname "${SRC#src/}")/$(basename "${SRC}" .pug).html"; mkdir -p $(dirname ${DEST}) && cat "${SRC}" | pug -P -b src > "${DEST}"'
+            # Compile CSS
+            find src/articles/* -type f -name "*.scss" -mindepth 2 -maxdepth 2 | xargs -I {} sh -c 'SRC="{}"; DEST="$(dirname "${SRC#src/}")/$(basename "${SRC}" .scss).css"; mkdir -p $(dirname ${DEST}) && sass "${SRC}" "${DEST}"'
+            # Also compile the article index
+            gomplate -f src/articles/index.pug.templ | pug -P -b src > articles/index.html
           fi
+          
       - name: Add and commit changes to main branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add css/* articles/* *.html > /dev/null 2>&1 || true
+          git add '*.css' '*.css.map' '*.html' > /dev/null 2>&1 || true
           if ! git diff --cached --quiet; then
             git commit -m 'Update compiled files'
             git push
