@@ -51,7 +51,6 @@ body {
 header, footer { text-align: center }
 
 header {
-	font-size: clamp(1em, 19vmin, 9em);
 	font-weight: 900;
 	filter: drop-shadow(13px 5px 13px $bg-1st)
 }
@@ -61,17 +60,28 @@ h1 {
 		--j: calc(1 - var(--i));
 		--sgn: calc(2*var(--i) - 1);
 		grid-area: 1/ 1;
-		transform: translate(calc(var(--sgn)*4px), calc(var(--sgn)*-3px));
+		place-self: center;
+		translate: 
+			calc(var(--sgn)*4px) 
+			calc(var(--sgn)*-3px);
+		color: hsl(0, 0%, 100%, .001);
+		font-size: clamp(1em, 19vmin, 9em);
 		--mask: 
 			linear-gradient(8deg, 
-					hsl(0, 0%, 100%, var(--j)) calc(50% - .5px), 
-					hsl(0, 0%, 100%, var(--i)) calc(50% + .5px));
-		-webkit-mask: var(--mask);
-						mask: var(--mask);
+					hsla(0, 0%, 0%, var(--j)) calc(50% - 1px), 
+					hsla(0, 0%, 0%, var(--i)) calc(50% + 1px));
 		
-		&:not([style]) {
-			transform: translatez(1px);
-			color: transparent
+		&[aria-hidden] {	
+			&::after {
+				background: 
+					linear-gradient(8deg, 
+							#fff 32%, #aaa calc(50% - 1px), 
+							#222, #fff calc(50% + 1px));
+				-webkit-background-clip: text;
+				-webkit-mask: var(--mask);
+								mask: var(--mask);
+				content: var(--text)
+			}
 		}
 	}
 }
