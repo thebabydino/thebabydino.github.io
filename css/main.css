@@ -72,6 +72,9 @@ h1 span {
   			hsla(0, 0%, 0%, var(--j)) calc(50% - 1px),
   			hsla(0, 0%, 0%, var(--i)) calc(50% + 1px));
 }
+h1 span[aria-hidden] {
+  pointer-events: none;
+}
 h1 span[aria-hidden]::after {
   background: linear-gradient(8deg, #fff 32%, #aaa calc(50% - 1px), #0d1117, #fff calc(50% + 1px));
   -webkit-background-clip: text;
