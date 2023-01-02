@@ -71,7 +71,9 @@ h1 {
 					hsla(0, 0%, 0%, var(--j)) calc(50% - 1px), 
 					hsla(0, 0%, 0%, var(--i)) calc(50% + 1px));
 		
-		&[aria-hidden] {	
+		&[aria-hidden] {
+			pointer-events: none;
+			
 			&::after {
 				background: 
 					linear-gradient(8deg, 
