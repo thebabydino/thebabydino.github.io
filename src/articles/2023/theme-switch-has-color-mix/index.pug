@@ -1,0 +1,17 @@
+extends /templ/_page.pug
+
+block title
+	title Theme Switch - Ana Tudor
+
+block extra_style
+	link(rel='stylesheet' src='index.css')
+
+block header
+	h1(style=`--text: 'Theme Switch'`)
+		span(aria-hidden='true' style='--i: 0')
+		span(aria-hidden='true' style='--i: 1')
+		span Theme Switch
+
+block content
+	section
+		p What in Odin's name I did
