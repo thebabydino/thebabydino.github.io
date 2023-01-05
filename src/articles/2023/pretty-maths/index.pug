@@ -1,0 +1,17 @@
+extends /templ/_page.pug
+
+block title
+	title Pretty formating of thoughts in the browser - Ana Tudor
+
+block extra_style
+	link(rel='stylesheet' src='index.css')
+
+block header
+	h1(style=`--text: 'Pretty formating of thoughts in the browser'`)
+		span(aria-hidden='true' style='--i: 0')
+		span(aria-hidden='true' style='--i: 1')
+		span Pretty formating of thoughts in the browser
+
+block content
+	section
+		p Some basic MathML shit.
