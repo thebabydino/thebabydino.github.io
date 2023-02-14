@@ -11,4 +11,14 @@ block header
 
 block content
 	article
-		p What the...
+		h2 Unit division in 
+			code calc()
+		section
+			p Trigonometric functions have been supported for almost a year in Safari, Firefox and now they're in Chromium browsers (111+ with Experimental Web Platform features enabled in chrome://flags) as well. And yet, I haven't seen much done with them.
+			p A part of it may be the fact that generally, not that many demos pop for anything until Chrome supports it. Plus, speaking from experience, testing in Safari is a pain if you're on Linux like me. Or on Windows.
+			p Another part of it may be the fact that the MDN examples and some of the few demos I've seen using them are really bad examples of usage. I'm not going to go into this here, but they're really bad in the sense that they force using trigonometric functions in situations where they're not even needed, where they're not solving any problems that couldn't be solved otherwise.
+			p And third part of it may be this: while trigonometric functions are a big essential part in solving some problems that cannot be solved otherwise, they are not the only part and some of the other parts have still been missing until Chromium support (the combination with @property is a massive one) and others are still missing (and here unit division is the big one).
+			p If you go to my CodePen profile and check out the Popular Pens tab, the very first one, my only demo to ever go well beyond a hundred thousand views, is a reproduction of this gif:
+			figure
+				img(src="https://66.media.tumblr.com/a4bf8109b1a71c0acc2893e530858b13/tumblr_o4rr8huvnP1tcuj64o1_400.gif")
+				figure The gif that inspired my most popular pen ever
