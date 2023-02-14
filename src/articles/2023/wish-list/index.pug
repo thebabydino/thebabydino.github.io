@@ -22,3 +22,30 @@ block content
 			figure
 				img(src="https://66.media.tumblr.com/a4bf8109b1a71c0acc2893e530858b13/tumblr_o4rr8huvnP1tcuj64o1_400.gif")
 				figure The gif that inspired my most popular pen ever
+			p I coded this in late 2016 with Sass and, while the Sass code is nice, clean and compact... the compiled CSS is anything but that!
+			p So this is a great use case for trigonometric functions as you can see that the items on the same line rotating relative to the middle grow at the same time.
+			p The way we solve this problem is by drawing position vectors from the middle of the grid to the middle of each tile and then getting the angles with respect to the horizontal, then getting the ratio that these angles represent of the whole 360 around the circle.
+			p Putting it into code, it works as follows: we first compute a middle index using the grid size stored in a custom property --n. This is something I've explained in detail in a post a few years back.
+			pre
+				code --m: calc(.5*(var(--n) - 1))
+			p Then, we get both the horixontal and the vertical distances of each tile's indices along the two axes (--i along the x axis, --j along the y axis) from the middle index:
+			pre
+				code
+					.token--rule --di: calc(var(--i) - var(--m));
+					.token--rule --dj: calc(var(--j) - var(--m));
+			p The angle with respect to the horizontal is:
+			pre
+				code --a: atan2(var(--dj), var(--di))
+			p Now we need to get this angle as a fraction of the full 360 around the circle in order to get what fraction of the animaton-duration the animation-delay for each tile is.
+			pre
+				code animation: ani $t linear calc(var(--a)/2turn*#{$t})
+			p Except... dividing by a number with a unit to get a unitless value, like the unitless fraction we need to multiply with the animation duration does not work in CSS!
+			p And there's no way to work around that. atan2() always returns an &lt;angle> value. We have to divde it by another angular value in order to get a unitless fraction.
+			p There is a spec, but no implementations.
+			p Out of all the wishes, this is the one I want badly. If none of the others happen, but at least this one does, I'll still be very happy. Please browsers, make this happen!
+	article
+		h2 Cross-browser support for filter()
+		section
+			p This has been supported by Safari for over half a decade, but sadly, no other browser has implemented it yet and even in Safari, the initial implementation didn't include CSS gradient images, only url() images.
+			p This could be used to add a grainy gradient background on an element with just one line of CSS. Yeah, it also requires an SVG filter, but it's a very simple one (and I've explained in detail every little part of it in the previously linked Stack Overflow answer).
+			p It could be also used to duotone an element's background-image without having to use extra background layers to emulate CSS filter effects with blend modes. For an in-depth explanation of how to use the difference or exclusion blend mode, a duotone base background-color and a B&W image in order to get a duotone image, check out this article.
