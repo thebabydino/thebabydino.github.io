@@ -65,7 +65,7 @@ h1 span {
   grid-area: 1/1;
   place-self: center;
   translate: calc(var(--sgn) * 4px) calc(var(--sgn) * -3px);
-  color: hsla(0deg, 0%, 100%, 0.001);
+  color: hsla(0, 0%, 100%, 0.001);
   font-size: clamp(1em, 19vmin, 9em);
   --mask:
   	linear-gradient(8deg,
